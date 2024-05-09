@@ -4,14 +4,27 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Comandos {
-    private static Map<String, Runnable> comando = new HashMap<String, Runnable>();
-comando.put("show TBALES", this::showTables);
-comando.put("DROP TABLE", () -> {
+    public boolean comandos(String comandos){
+        String [] sentencia = comandos.split(" ");
         try{
+            if(sentencia[0].equals("CREATE")){
+                CREATE(comandos);
+                return true;
+            }else if(sentencia[0].equals("INSERT") && sentencia[1].equals("INTO")){
 
-        }catch (IOException e){
-            throw new RuntimeException(e);
+            }else if( sentencia[0].equals("DROP")){
+                Drop_Table(comandos);
+            }
+        }catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Comando invalido");
         }
-    });
+        return false;
+    }
+
+    private void Drop_Table(String comandos) {
+    }
+
+    private void CREATE(String comandos) {
+    }
 
 }
